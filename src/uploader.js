@@ -21,16 +21,11 @@
 	};
 
 	var uploadFile = function (file, $fileUploader, settings) {
-		if (settings.uploadConfig.url) {
-			uploadToServer(file, settings);
-		} else {
-			convertToObjectURL(file, settings);
-		}
-
+			uploadToServer($fileUploader, file, settings);
 	};
 
-	var uploadToServer = function (file, settings) {
-		var $uploadingBar = $fileUploader.find(configs.uploadingBar);
+	var uploadToServer = function (fileUploader, file, settings) {
+		var $uploadingBar = fileUploader.find('.uploading-bar');
 		$uploadingBar.html('(' + file.name + '正在准备上传...)');
 
 		var params = settings.uploadConfig.params;
@@ -43,7 +38,7 @@
 
 		$.ajax({
 			type: 'POST',
-			url: settings.uploadConfig.url,
+			url: "http://127.0.0.1:8080/hsserv/upload",
 			data: formData,
 			contentType: false,
 			processData: false,
@@ -132,7 +127,7 @@
 	};
 
 	var checkFileExt = function (filePath) {
-		var validTypes = ['.png', '.gif', '.jpg', '.jpeg'];
+		var validTypes = ['.png', '.gif', '.jpg', '.jpeg', '.log'];
 		var extStart = filePath.lastIndexOf(".");
 		var ext = filePath.substring(extStart, filePath.length).toLowerCase();
 
