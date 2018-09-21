@@ -32,15 +32,15 @@
 		var formData = new FormData();
 		formData.append('file', file, file.name);
 
-		$.map(params, function(key, val) {
+/*		$.map(params, function(key, val) {
 			formData.append(key, val);
-		});
+		});*/
 
 		$.ajax({
 			type: 'POST',
-			url: "http://localhost:18889/api/hsserv/upload",
+			url: "/api/hsserv/upload",
 			data: formData,
-			contentType: "multipart/form-data",
+			contentType: false,
 			processData: false,
 			complete: function (res) {
 				var re = JSON.parse(res.responseText);
