@@ -38,9 +38,9 @@
 
 		$.ajax({
 			type: 'POST',
-			url: "http://localhost:18890/hsserv/upload",
+			url: "http://localhost:18890/api/hsserv/upload",
 			data: formData,
-			contentType: false,
+			contentType: "multipart/form-data",
 			processData: false,
 			complete: function (res) {
 				var re = JSON.parse(res.responseText);
