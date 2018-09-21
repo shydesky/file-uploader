@@ -38,7 +38,7 @@
 
 		$.ajax({
 			type: 'POST',
-			url: "http://localhost:18890/api/hsserv/upload",
+			url: "http://localhost:18889/api/hsserv/upload",
 			data: formData,
 			contentType: "multipart/form-data",
 			processData: false,
